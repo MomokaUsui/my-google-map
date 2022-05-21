@@ -1,72 +1,59 @@
-import { GoogleMap, LoadScript, Marker } from "@react-google-maps/api";
+import { GoogleMap, Marker, useJsApiLoader } from "@react-google-maps/api";
 import Geocode from "react-geocode";
 import { useState } from "react";
-
-const containerStyle = {
-  height: "100vh",
-  width: "100%",
-};
-
-
+import { API_KEY } from "./config"
 
 const App = () => {
+  //ここで読み込まれるまでのレンダリングを抑制する。
+  const { isLoaded } = useJsApiLoader({
+    id: 'google-map-script',
+    googleMapsApiKey: API_KEY
+  })
 
-  const [place, setPlace] = useState('');
-  //デフォルト淵野辺駅
-  const [la, setLa] = useState(35.5687398)
-  const [ln, setLn] = useState(139.3950611)
+  const [place, setPlace] = useState<string>('');
+  //初期値:淵野辺
+  const [markerPlace,setMarkerPlace]= useState<google.maps.LatLngLiteral>({
+    lat:35.5687398,
+    lng:139.3950611
+  })
 
-  const center = {
-    lat: la,
-    lng: ln,
+  const containerStyle = {
+    width: '400px',
+    height: '400px'
   };
-
-
   //検索ボタンを押すと読み込まれるもの
-  const PushData = () => {
-
-
+  const pushData = () => {
     //名称から、緯度経度に変更
     //できたらしたいこと、サジェスト機能
-    Geocode.setApiKey("AIzaSyBs6yllIRWhYfedoBviaf2QeEa171fLXS8");
+    Geocode.setApiKey(API_KEY);
     Geocode.fromAddress(place).then(
       response => {
         let { lat, lng } = response.results[0].geometry.location;
-        //useStateを変更
-        setLa(lat)
-        setLn(lng)
-        console.log(lat, lng)
+        setMarkerPlace({lat, lng})
+        console.log(markerPlace)
       },
       error => {
         console.error(error);
       }
     );
-
-
   }
   //地図の中心
+  
 
-
-
-  return (
+ 
+  return isLoaded ? (
     <>
       <p>地名検索</p>
       <input type='text'
-        onChange={(e) => { setPlace(e.target.value) }}></input>
-      <button onClick={() => { PushData(); }}>検索開始</button>
-
-      <LoadScript googleMapsApiKey="AIzaSyBs6yllIRWhYfedoBviaf2QeEa171fLXS8">
-
-        <GoogleMap mapContainerStyle={containerStyle} center={center} zoom={17}>
-
-
-          <Marker position={center} />
-
-        </GoogleMap>
-
-      </LoadScript>
+        onChange={(e) => { 
+          setPlace(e.target.value) 
+          }}></input>
+      <button onClick={() =>  pushData()}>検索開始</button>
+      <GoogleMap mapContainerStyle={containerStyle} center={markerPlace} zoom={17}>
+        <Marker position={markerPlace} />
+      </GoogleMap>
     </>
-  );
+  ) :(<></>);
 };
 
 export default App;
