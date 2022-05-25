@@ -12,18 +12,24 @@ const MarksPage = () => {
         //データベースからデータを取得する
         const markerData = collection(db, "markers");
         getDocs(markerData).then((snapShot) => {
-            console.log(snapShot.docs.map((doc) =>  doc.data() )[0]);
             setMarkers([...snapShot.docs.map((doc) => {
                 return {
                     latitude: doc.data().latitude,
                     longitude: doc.data().longitude
                 }
             })]);
-
         })
 
     }, [])
-
+    //スプレット構文
+    const test = [0,1,2,3]
+    const [testState,setTestState] = useState<number[]>(test)
+    console.log(testState)
+    useEffect(() => {
+        console.log(testState)
+        
+        setTestState([...test,...test.map((test) => test*2)])
+    },[])
 
     return (
 
