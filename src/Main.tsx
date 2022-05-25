@@ -19,8 +19,8 @@ const Main = () => {
   })
 
   const containerStyle = {
-    width: '400px',
-    height: '400px'
+    width: '600px',
+    height: '600px'
   };
   //検索ボタンを押すと読み込まれるもの
   const pushData = () => {
@@ -54,6 +54,7 @@ const Main = () => {
       <button onClick={() => pushData()}>検索開始</button>
       <GoogleMap mapContainerStyle={containerStyle} center={markerPlace} zoom={17}>
         <Marker position={markerPlace} />
+        <Marker position={{ lat: 35.5687398, lng: 139.3950611 }} />
       </GoogleMap>
 
     </>
