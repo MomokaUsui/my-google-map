@@ -2,6 +2,8 @@ import { GoogleMap, Marker, useJsApiLoader } from "@react-google-maps/api";
 import Geocode from "react-geocode";
 import { useEffect, useState } from "react";
 import { API_KEY } from "./config"
+import { Link } from "react-router-dom"
+// import Save from "./Save";
 
 
 const Main = () => {
@@ -38,24 +40,32 @@ const Main = () => {
       }
     );
   }
+
   //地図の中心
 
 
 
   return isLoaded ? (
     <>
+      <Link to="/markSavePage">ピン一覧</Link>
 
       <p>地名検索</p>
+      {/* <Save /> */}
+
 
       <input type='text'
         onChange={(e) => {
           setPlace(e.target.value)
         }}></input>
+
       <button onClick={() => pushData()}>検索開始</button>
+
       <GoogleMap mapContainerStyle={containerStyle} center={markerPlace} zoom={17}>
         <Marker position={markerPlace} />
         <Marker position={{ lat: 35.5687398, lng: 139.3950611 }} />
       </GoogleMap>
+
+
 
     </>
   ) : (<></>);
