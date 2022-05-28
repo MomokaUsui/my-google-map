@@ -51,8 +51,6 @@ const Main = () => {
 
       <p>地名検索</p>
       {/* <Save /> */}
-
-
       <input type='text'
         onChange={(e) => {
           setPlace(e.target.value)
