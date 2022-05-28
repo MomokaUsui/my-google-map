@@ -36,7 +36,7 @@ const MarksPage = () => {
 
     return isLoaded ? (
         <>
-            <Link to="/">検索ページ</Link>
+            <Link to="/search">検索ページ</Link>
             <div>
                 {
                     markers.map((mark, key) => {

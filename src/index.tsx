@@ -15,7 +15,8 @@ root.render(
     <React.StrictMode>
       <Routes>
 
-        <Route path='/' element={<Main />} />
+        <Route path='/' element={<App />} />
+        <Route path='/search' element={<Main />} />
         <Route path='markSavePage' element={<MarksPage />} />
 
       </Routes>
