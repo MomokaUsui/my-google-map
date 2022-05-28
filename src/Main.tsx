@@ -2,6 +2,7 @@ import { GoogleMap, Marker, useJsApiLoader } from "@react-google-maps/api";
 import Geocode from "react-geocode";
 import { useEffect, useState } from "react";
 import { API_KEY } from "./config"
+import { Link } from "react-router-dom"
 // import Save from "./Save";
 
 
@@ -46,6 +47,7 @@ const Main = () => {
 
   return isLoaded ? (
     <>
+      <Link to="/markSavePage">ピン一覧</Link>
 
       <p>地名検索</p>
       {/* <Save /> */}

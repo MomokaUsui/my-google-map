@@ -5,6 +5,7 @@ import { CoordinateData, Position } from "./types";
 import { GoogleMap, Marker, useJsApiLoader } from "@react-google-maps/api";
 import { useEffect, useState } from "react";
 import { API_KEY } from "./config"
+import { Link } from 'react-router-dom';
 
 const MarksPage = () => {
     const { isLoaded } = useJsApiLoader({
@@ -35,6 +36,7 @@ const MarksPage = () => {
 
     return isLoaded ? (
         <>
+            <Link to="/">検索ページ</Link>
             <div>
                 {
                     markers.map((mark, key) => {
