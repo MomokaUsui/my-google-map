@@ -1,6 +1,6 @@
 
 import db from './firebase'
-import { collection, getDocs } from 'firebase/firestore'
+import { collection, getDocs, doc, setDoc } from 'firebase/firestore'
 import { CoordinateData, Position } from "./types";
 import { GoogleMap, Marker, useJsApiLoader } from "@react-google-maps/api";
 import { useEffect, useState } from "react";
@@ -32,6 +32,7 @@ const MarksPage = () => {
         })
     }, [])
     const pins: { lat: number, lng: number }[] = [];
+
     return isLoaded ? (
         <>
             <div>

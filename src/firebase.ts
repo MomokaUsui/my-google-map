@@ -2,6 +2,7 @@ import { initializeApp } from "firebase/app"
 import { getAnalytics } from "firebase/analytics";
 import { getFirestore } from "firebase/firestore"
 import { FIREBASE_API_KEY, MY_APP_ID, MY_AUTH_DOMAIN, MY_MEASUREMENT_ID, MY_MESSAGEING_SENDER_ID, MY_PROJECT_ID, MY_STORAGE_BUCKET } from "./config";
+
 const firebaseConfig = {
     apiKey: FIREBASE_API_KEY,
     authDomain: MY_AUTH_DOMAIN,
