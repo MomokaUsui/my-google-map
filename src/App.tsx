@@ -4,6 +4,7 @@ import pic from "./googleMap.png"
 
 function App() {
     return (
+
         <>
             <div className="relative px-4 pt-16 mx-auto lg:py-32 md:px-8 xl:px-20 sm:max-w-xl md:max-w-full">
                 <div className="max-w-xl mx-auto lg:max-w-screen-xl">
@@ -28,15 +29,15 @@ function App() {
                         </div>
                         <div className="flex items-center">
                             <Link
-                                to="/markSavePage"
+                                to="/search"
                                 className="inline-flex bg-indigo-500 items-center justify-center h-12 px-6 mr-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-deep-purple-accent-400 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none"
                             >
                                 search started
                             </Link>
                             <Link
-                                to="/search"
-                                aria-label=""
-                                className="inline-flex items-center font-semibold text-gray-800 transition-colors duration-200 hover:text-deep-purple-accent-700"
+                                to="/markSavePage"
+
+                                className="inline-flex bg-indigo-200 items-center justify-center h-12 px-6 mr-6 font-medium tracking-wide text-indigo-700 transition duration-200 rounded shadow-md bg-deep-purple-accent-400 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none"
                             >
                                 Marker List
                             </Link>
