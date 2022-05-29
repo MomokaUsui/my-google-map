@@ -1,3 +1,5 @@
+
+
 import { GoogleMap, Marker, useJsApiLoader } from "@react-google-maps/api";
 import Geocode from "react-geocode";
 import { useEffect, useState } from "react";
@@ -21,7 +23,7 @@ const Main = () => {
   })
 
   const containerStyle = {
-    width: '600px',
+    width: '1200px',
     height: '600px'
   };
   //検索ボタンを押すと読み込まれるもの
@@ -47,21 +49,102 @@ const Main = () => {
 
   return isLoaded ? (
     <>
-      <Link to="/markSavePage">ピン一覧</Link>
 
-      <p>地名検索</p>
-      {/* <Save /> */}
-      <input type='text'
-        onChange={(e) => {
-          setPlace(e.target.value)
-        }}></input>
+      <div className="container px-6 mx-auto">
+        <div className="flex flex-wrap py-2">
+          <div className="w-full px-4">
+            <nav className="relative flex flex-wrap items-center justify-between px-2 py-3 bg-indigo-500 rounded">
+              <div className="container px-4 mx-auto flex flex-wrap items-center justify-between">
+                <div className="w-full relative flex justify-between lg:w-auto px-4 lg:static lg:block lg:justify-start">
+                  <a className="text-sm font-bold leading-relaxed inline-block mr-4 py-2 whitespace-nowrap uppercase text-white" href="#pablo">
+                    Google Map Api
+                  </a>
+                  <a className="text-sm font-bold leading-relaxed inline-block mr-4 py-0 whitespace-nowrap uppercase text-white" href="#pablo">
+                    search
+                  </a>
 
-      <button onClick={() => pushData()}>検索開始</button>
+                </div>
+                <div className="flex lg:flex-grow items-center" id="example-navbar-info">
+                  <ul className="flex flex-col lg:flex-row list-none ml-auto">
+                    <li className="nav-item">
+                      <Link to="/" className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-white hover:opacity-75" >
+                        Back to Home
+                      </Link>
+                    </li>
+                    <li className="nav-item">
+                      <a className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-white hover:opacity-75">
+                        View List
+                      </a>
+                    </li>
+                    <li className="nav-item">
+                      <Link to="/markSavePage" className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-white hover:opacity-75" >
+                        Marker List
+                      </Link>
 
-      <GoogleMap mapContainerStyle={containerStyle} center={markerPlace} zoom={17}>
-        <Marker position={markerPlace} />
-        <Marker position={{ lat: 35.5687398, lng: 139.3950611 }} />
-      </GoogleMap>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </nav>
+
+
+
+            <div className="container px-0 py-6 mx-auto lg:flex lg:items-center lg:justify-between">
+              <div className="mt-8 lg:mt-0">
+                <label className="leading-7 text-sm text-gray-600 mx-1">Search</label>
+                <div className="flex flex-col space-y-3 sm:space-y-0 sm:flex-row sm:-mx-2">
+
+                  <input type='text'
+                    placeholder="淵野辺"
+                    className='px-4 py-2 text-gray-700 bg-white border border-gray-300 rounded-md sm:mx-2 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-600 focus:border-indigo-400 dark:focus:border-indigo-400 focus:ring-indigo-300 focus:outline-none focus:ring focus:ring-opacity-40'
+                    onChange={(e) => {
+                      setPlace(e.target.value)
+                    }}></input>
+
+
+                  <button className="px-4 py-2 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-200 transform bg-indigo-500 rounded-md focus:ring focus:ring-indigo-300 focus:ring-opacity-80 fo sm:mx-2 hover:bg-indigo-600 focus:outline-none focus:bg-indigo-600" onClick={() => pushData()}>検索開始</button>
+                </div>
+              </div>
+            </div>
+
+
+
+            <div className="center">
+              <GoogleMap mapContainerStyle={containerStyle} center={markerPlace} zoom={15}>
+                <Marker position={markerPlace} />
+                <Marker position={{ lat: 35.5687398, lng: 139.3950611 }} />
+              </GoogleMap>
+            </div>
+          </div>
+        </div>
+
+
+
+
+
+
+        <footer className="bg-white dark:bg-gray-800">
+          <div className="container px-6 py-8 mx-auto">
+            <div className="text-center">
+            </div>
+
+            <hr className="my-10 border-gray-200 dark:border-gray-700" />
+
+            <div className="flex flex-col items-center sm:flex-row sm:justify-between">
+              <p className="text-sm text-gray-400">© Copyright 2022. All Rights Reserved.</p>
+
+              <div className="flex mt-3 -mx-2 sm:mt-0">
+                <a href="#" className="mx-2 text-sm text-gray-400 hover:text-gray-500 dark:hover:text-gray-300" aria-label="Reddit"> Teams </a>
+
+                <a href="#" className="mx-2 text-sm text-gray-400 hover:text-gray-500 dark:hover:text-gray-300" aria-label="Reddit"> Privacy </a>
+
+                <a href="#" className="mx-2 text-sm text-gray-400 hover:text-gray-500 dark:hover:text-gray-300" aria-label="Reddit"> Cookies </a>
+              </div>
+            </div>
+          </div>
+
+        </footer>
+      </div>
 
 
 
@@ -70,4 +153,5 @@ const Main = () => {
 };
 
 export default Main;
+
 

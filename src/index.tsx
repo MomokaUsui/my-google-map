@@ -12,16 +12,16 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <BrowserRouter>
-    <React.StrictMode>
-      <Routes>
 
-        <Route path='/' element={<App />} />
-        <Route path='/search' element={<Main />} />
-        <Route path='markSavePage' element={<MarksPage />} />
+    <Routes>
 
-      </Routes>
+      <Route path='/' element={<App />} />
+      <Route path='/search' element={<Main />} />
+      <Route path='markSavePage' element={<MarksPage />} />
 
-    </React.StrictMode>
+    </Routes>
+
+
   </BrowserRouter>
 );
 
